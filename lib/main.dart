@@ -7,15 +7,11 @@ import 'package:todoshka/utils/general_bloc_observable.dart';
 import 'package:todoshka/utils/router.gr.dart';
 import 'package:todoshka/utils/router_observer.dart';
 import 'di/di.dart';
+import 'package:todoshka/db/appdatabase.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
-
-  // final database = await $FloorAppDataBase
-  //     .databaseBuilder('flutter_database.db')
-  //     .build();
-  // final dao = database.taskDao;
 
   await ScreenUtil.ensureScreenSize();
   Loggy.initLoggy(logPrinter: const PrettyPrinter());
