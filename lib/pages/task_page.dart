@@ -13,7 +13,6 @@ class TaskPage extends StatefulWidget {
 class _TaskPageState extends State<TaskPage> {
 
   var isCheck = false;
-
   @override
   Widget build(BuildContext context) {
     return Container(
