@@ -209,3 +209,206 @@ class _CategoryPageState extends State<CategoryPage> {
     );
   }
 }
+
+
+class ShowBottomSheet extends StatefulWidget {
+  const ShowBottomSheet({super.key});
+
+  @override
+  State<ShowBottomSheet> createState() => _ShowBottomSheet();
+}
+
+class _ShowBottomSheet extends State<ShowBottomSheet> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding:
+      EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: IntrinsicHeight(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            newCategory(),
+            fieldCategoryName(),
+            openEmojiDialog(),
+            buttonDialog("Создать", () {
+            }),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+Widget buttonDialog(String text, Function() onTap) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(6.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 1,
+            blurRadius: 10,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      padding: const EdgeInsets.only(
+        top: 8,
+        bottom: 8,
+      ),
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: const TextStyle(color: Colors.white, fontSize: 14.0),
+      ),
+    ),
+  );
+}
+
+Widget newCategory() {
+  return Padding(
+    padding: const EdgeInsets.all(16),
+    child: IntrinsicHeight(
+      child: Container(
+        alignment: Alignment.center,
+        width: double.infinity,
+        padding: const EdgeInsets.all(18),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: const Offset(0, 3), // changes position of shadow
+            ),
+          ],
+        ),
+        child: const Text(
+          "Новая категория",
+          style: TextStyle(color: Colors.blue, fontSize: 14),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget fieldCategoryName() {
+  return Padding(
+    padding: EdgeInsets.symmetric(horizontal: 44, vertical: 26),
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 1,
+            blurRadius: 6,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
+      child: TextField(
+        textAlign: TextAlign.center,
+        decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(width: 3, color: Colors.blue),
+                borderRadius: BorderRadius.circular(16)),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(width: 3, color: Colors.blue),
+                borderRadius: BorderRadius.circular(16)),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(width: 3, color: Colors.red),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            hintText: "Название категории"),
+      ),
+    ),
+  );
+}
+
+Widget openEmojiDialog() {
+  return Padding(
+    padding: EdgeInsets.symmetric(
+      horizontal: 108,
+    ),
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 1,
+            blurRadius: 6,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
+      child: TextField(
+        textAlign: TextAlign.center,
+        decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(width: 3, color: Colors.blue),
+                borderRadius: BorderRadius.circular(16)),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(width: 3, color: Colors.blue),
+                borderRadius: BorderRadius.circular(16)),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(width: 3, color: Colors.red),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            hintText: "Иконка"),
+      ),
+    ),
+  );
+}
+
+Widget categoryContainer(BuildContext context) {
+  return IntrinsicHeight(
+    child: Container(
+      width: MediaQuery.of(context).size.width / 2,
+      child: Column(
+        children: [
+          Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Text(
+                  "O",
+                ),
+              )),
+          Padding(
+            padding:
+            const EdgeInsets.only(left: 72, right: 72, top: 28, bottom: 6),
+            child: Text(
+              "0",
+              style: TextStyle(fontSize: 20, color: Colors.blue),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 14),
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                "Здоровье",
+                style: TextStyle(fontSize: 10, color: Colors.blue),
+              ),
+            ),
+          )
+        ],
+      ),
+      color: Colors.white,
+    ),
+  );
+}
+
